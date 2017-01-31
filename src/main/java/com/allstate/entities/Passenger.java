@@ -1,36 +1,37 @@
 package com.allstate.entities;
 
-import com.allstate.enums.Cartype;
+import com.allstate.enums.Gender;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.type.*;
 
 import javax.persistence.*;
+import javax.persistence.EnumType;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-@Table(name="cars")
+@Table(name="passengers")
 @Data
-public class Car {
+public class Passenger {
     private int id;
     private int version;
-    private String make;
-    private String model;
-    private int year;
-    private Cartype cartype;
+    private String name;
+    private int age;
+    private Gender gender;
+    private double balance;
     private Date created;
     private Date modified;
 
-    public Car(String make, String model, int year, Cartype cartype) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-        this.cartype = cartype;
+    public Passenger() {
     }
 
-    public Car() {
-
+    public Passenger(String name, int age, Gender gender, double balance) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.balance = balance;
     }
 
     @Id
@@ -51,37 +52,36 @@ public class Car {
     }
 
     @NotNull
-    public String getMake() {
-        return make;
+    public String getName() {
+        return name;
     }
-    public void setMake(String make) {
-        this.make = make;
-    }
-
-    @NotNull
-    public String getModel() {
-        return model;
-    }
-    public void setModel(String model) {
-        this.model = model;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @NotNull
-    public int getYear() {
-        return year;
+    public int getAge() {
+        return age;
     }
-    public void setYear(int year) {
-        this.year = year;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    @NotNull
-    @Column(nullable = false, columnDefinition = "ENUM('BASIC','LUX')")
     @Enumerated(EnumType.STRING)
-    public Cartype getCartype() {
-        return cartype;
+    @Column(nullable = false, columnDefinition = "ENUM('M','F')")
+    public Gender getGender() {
+        return gender;
     }
-    public void setCartype(Cartype cartype) {
-        this.cartype = cartype;
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    @NotNull
+    public double getBalance() {
+        return balance;
+    }
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     @CreationTimestamp
