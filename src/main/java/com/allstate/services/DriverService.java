@@ -25,4 +25,8 @@ public class DriverService {
     public void delete(int id) {
         this.driverRepository.delete(id);
     }
+
+    public Driver updateViolations(Driver driver) {
+        return this.driverRepository.save(driver);
+    }
 }

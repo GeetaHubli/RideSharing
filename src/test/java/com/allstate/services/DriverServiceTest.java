@@ -56,4 +56,13 @@ public class DriverServiceTest {
         Driver driver = this.driverService.findById(1);
         assertNull(driver);
     }
+
+    @Test
+    public void shouldAddViolationForDriver() throws Exception {
+        Driver driver = this.driverService.findById(1);
+        driver.setViolations(driver.getViolations() + 1);
+        Driver result = this.driverService.updateViolations(driver);
+        assertEquals(1, result.getViolations());
+        assertEquals(1, result.getId());
+    }
 }
