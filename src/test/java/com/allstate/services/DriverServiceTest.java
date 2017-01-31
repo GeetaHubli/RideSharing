@@ -49,4 +49,11 @@ public class DriverServiceTest {
         Driver driver = this.driverService.findById(3);
         assertNull(driver);
     }
+
+    @Test(expected = org.springframework.dao.DataIntegrityViolationException.class)
+    public void shouldNotDeleteDriverByIdIfTripExist() throws Exception {
+        this.driverService.delete(1);
+        Driver driver = this.driverService.findById(1);
+        assertNull(driver);
+    }
 }

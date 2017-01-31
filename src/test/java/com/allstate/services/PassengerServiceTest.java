@@ -49,6 +49,12 @@ public class PassengerServiceTest {
         this.passengerService.delete(3);
         Passenger result = this.passengerService.findById(3);
         assertNull(result);
+    }
 
+    @Test(expected = org.springframework.dao.DataIntegrityViolationException.class)
+    public void shouldNotDeletePassengerByIdIfTripExist() throws Exception {
+        this.passengerService.delete(1);
+        Passenger result = this.passengerService.findById(1);
+        assertNull(result);
     }
 }

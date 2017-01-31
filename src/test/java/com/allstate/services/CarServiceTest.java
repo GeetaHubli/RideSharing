@@ -1,6 +1,7 @@
 package com.allstate.services;
 
 import com.allstate.entities.Car;
+import com.allstate.entities.Trip;
 import com.allstate.enums.Cartype;
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.persistence.Table;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -19,6 +24,9 @@ public class CarServiceTest {
 
     @Autowired
     private CarService carService;
+
+    @Autowired
+    private TripService tripService;
 
     @Before
     public void setUp() throws Exception {
@@ -45,10 +53,24 @@ public class CarServiceTest {
     }
 
     @Test
+    public void shouldFindTripWithCarId() throws Exception {
+        List<Trip> trip = this.tripService.findByCarIdIs(1);
+        assertEquals(2, trip.size());
+    }
+
+    @Test
     public void shouldDeleteCarById() throws Exception {
         this.carService.delete(3);
         Car car = this.carService.findById(3);
         assertNull(car);
-
     }
+
+    @Test(expected = org.springframework.dao.DataIntegrityViolationException.class)
+    public void shouldNotDeleteCarByIdIfTripExist() throws Exception {
+        this.carService.delete(1);
+        Car car = this.carService.findById(1);
+        assertNull(car);
+    }
+
+
 }

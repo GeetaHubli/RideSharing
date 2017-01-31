@@ -59,4 +59,11 @@ public class CityServiceTest {
         City city = this.cityService.findById(3);
         assertNull(city);
     }
+
+    @Test(expected = org.springframework.dao.DataIntegrityViolationException.class)
+    public void shouldNotDeleteCityByIdIfTripExist() throws Exception {
+        this.cityService.delete(1);
+        City city = this.cityService.findById(1);
+        assertNull(city);
+    }
 }

@@ -6,6 +6,8 @@ import com.allstate.repositories.ITripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TripService {
     private ITripRepository tripRepository;
@@ -25,5 +27,9 @@ public class TripService {
 
     public void delete(int id) {
         this.tripRepository.delete(id);
+    }
+
+    public List<Trip> findByCarIdIs(int carId) {
+        return (List<Trip>) this.tripRepository.findByCarIdIs(carId);
     }
 }

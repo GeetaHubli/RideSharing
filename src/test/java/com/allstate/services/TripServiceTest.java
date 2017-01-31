@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import static org.junit.Assert.*;
@@ -53,7 +52,6 @@ public class TripServiceTest {
         Trip trip = new Trip(30.00, timestamp, timestamp, car, passenger, driver, city, 10, 200.00, 200.00);
         Trip result = this.tripService.create(trip);
         assertEquals(3, result.getId());
-
     }
 
     @Test
@@ -61,7 +59,6 @@ public class TripServiceTest {
         Trip trip = this.tripService.findById(1);
         assertEquals(1, trip.getId());
         assertEquals(30.00, trip.getDuration(), 0.1);
-
     }
 
     @Test
