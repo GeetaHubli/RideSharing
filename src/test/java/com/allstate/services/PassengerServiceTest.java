@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 public class PassengerServiceTest {
     @Autowired
     private PassengerService passengerService;
+
     @Before
     public void setUp() throws Exception {
 
@@ -45,8 +46,8 @@ public class PassengerServiceTest {
 
     @Test
     public void shouldDeletePassengerById() throws Exception {
-        this.passengerService.delete(2);
-        Passenger result = this.passengerService.findById(2);
+        this.passengerService.delete(3);
+        Passenger result = this.passengerService.findById(3);
         assertNull(result);
 
     }

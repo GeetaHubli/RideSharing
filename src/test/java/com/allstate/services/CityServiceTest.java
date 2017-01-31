@@ -55,8 +55,8 @@ public class CityServiceTest {
 
     @Test
     public void shouldDeleteCityById() throws Exception {
-        this.cityService.delete(1);
-        City city = this.cityService.findById(1);
+        this.cityService.delete(3);
+        City city = this.cityService.findById(3);
         assertNull(city);
     }
 }

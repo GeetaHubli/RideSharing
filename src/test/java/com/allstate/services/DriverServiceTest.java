@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
 public class DriverServiceTest {
     @Autowired
     private DriverService driverService;
-    
+
     @Before
     public void setUp() throws Exception {
 
@@ -45,8 +45,8 @@ public class DriverServiceTest {
 
     @Test
     public void shouldDeleteDriverById() throws Exception {
-        this.driverService.delete(2);
-        Driver driver = this.driverService.findById(2);
+        this.driverService.delete(3);
+        Driver driver = this.driverService.findById(3);
         assertNull(driver);
     }
 }

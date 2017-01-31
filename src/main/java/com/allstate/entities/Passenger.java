@@ -1,6 +1,7 @@
 package com.allstate.entities;
 
 import com.allstate.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 import javax.persistence.EnumType;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="passengers")
@@ -23,6 +25,7 @@ public class Passenger {
     private double balance;
     private Date created;
     private Date modified;
+    private List<Passenger> passengers;
 
     public Passenger() {
     }
@@ -98,5 +101,15 @@ public class Passenger {
     }
     public void setModified(Date modified) {
         this.modified = modified;
+    }
+
+    //Trip to Passenger mapping
+    @OneToMany(mappedBy = "passengers")
+    @JsonIgnore
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
     }
 }

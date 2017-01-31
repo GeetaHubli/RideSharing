@@ -46,8 +46,8 @@ public class CarServiceTest {
 
     @Test
     public void shouldDeleteCarById() throws Exception {
-        this.carService.delete(1);
-        Car car = this.carService.findById(1);
+        this.carService.delete(3);
+        Car car = this.carService.findById(3);
         assertNull(car);
 
     }

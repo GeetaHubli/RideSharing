@@ -1,6 +1,7 @@
 package com.allstate.entities;
 
 import com.allstate.enums.Cartype;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="cars")
@@ -21,6 +23,7 @@ public class Car {
     private Cartype cartype;
     private Date created;
     private Date modified;
+    private List<Car> cars;
 
     public Car(String make, String model, int year, Cartype cartype) {
         this.make = make;
@@ -38,6 +41,7 @@ public class Car {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -46,6 +50,7 @@ public class Car {
     public int getVersion() {
         return version;
     }
+
     public void setVersion(int version) {
         this.version = version;
     }
@@ -54,6 +59,7 @@ public class Car {
     public String getMake() {
         return make;
     }
+
     public void setMake(String make) {
         this.make = make;
     }
@@ -62,6 +68,7 @@ public class Car {
     public String getModel() {
         return model;
     }
+
     public void setModel(String model) {
         this.model = model;
     }
@@ -70,6 +77,7 @@ public class Car {
     public int getYear() {
         return year;
     }
+
     public void setYear(int year) {
         this.year = year;
     }
@@ -80,6 +88,7 @@ public class Car {
     public Cartype getCartype() {
         return cartype;
     }
+
     public void setCartype(Cartype cartype) {
         this.cartype = cartype;
     }
@@ -88,6 +97,7 @@ public class Car {
     public Date getCreated() {
         return created;
     }
+
     public void setCreated(Date created) {
         this.created = created;
     }
@@ -96,7 +106,19 @@ public class Car {
     public Date getModified() {
         return modified;
     }
+
     public void setModified(Date modified) {
         this.modified = modified;
     }
+
+    //Trip to Car mapping
+    @OneToMany(mappedBy = "cars")
+    @JsonIgnore
+    public List<Car> getCars() {
+        return cars;
+    }
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
 }

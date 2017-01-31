@@ -1,12 +1,14 @@
 package com.allstate.entities;
 
 import com.allstate.enums.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="drivers")
@@ -30,7 +32,7 @@ public class Driver {
     private int violations;
     private Date created;
     private Date modified;
-
+    private List<Driver> drivers;
 
     @Id
     @GeneratedValue
@@ -96,5 +98,15 @@ public class Driver {
     }
     public void setModified(Date modified) {
         this.modified = modified;
+    }
+
+    //Trip to Driver mapping
+    @OneToMany(mappedBy = "drivers")
+    @JsonIgnore
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+    public void setDrivers(List<Driver> passengers) {
+        this.drivers = passengers;
     }
 }
