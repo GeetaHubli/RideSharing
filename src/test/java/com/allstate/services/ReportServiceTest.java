@@ -1,9 +1,6 @@
 package com.allstate.services;
 
-import com.allstate.entities.Car;
-import com.allstate.entities.City;
-import com.allstate.entities.Driver;
-import com.allstate.entities.Trip;
+import com.allstate.entities.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,9 +103,13 @@ public class ReportServiceTest {
     }
 
     @Test
-    public void shouldFindCarByTripId() throws Exception {
+    public void shouldFindCarAndDriverAndPassengerByTripId() throws Exception {
         Trip trip = this.tripService.findById(1);
         Car car = trip.getCar();
+        Driver driver = trip.getDriver();
+        Passenger passenger = trip.getPassenger();
         assertEquals(1, car.getId());
+        assertEquals(1, driver.getId());
+        assertEquals(1, passenger.getId());
     }
 }
