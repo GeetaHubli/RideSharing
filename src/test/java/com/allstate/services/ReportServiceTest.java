@@ -74,10 +74,18 @@ public class ReportServiceTest {
         assertEquals(2, city.getDrivers().size());
     }
 
-//    @Test
-//    public void shouldFindCitiesByDriverId() throws Exception {
-//        Driver driver = this.driverService.findById(1);
-//        List<City> cities = driver.getCities();
-//        assertEquals();
-//    }
+    @Test
+    @Transactional
+    public void shouldFindAllCitiesByDriverId_WithNoDistinct() throws Exception {
+        Driver driver = this.driverService.findById(1);
+        List<City> cities = driver.getCities();
+        assertEquals(3, cities.size());
+    }
+
+    @Test
+    @Transactional
+    public void shouldFindAllCitiesByDriverId_DistinctValues() throws Exception {
+        List<City> cities = this.reportService.findDistinctCitiesByDriverId(1);
+        assertEquals(2, cities.size());
+    }
 }

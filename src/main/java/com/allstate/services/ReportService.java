@@ -12,6 +12,12 @@ import java.util.List;
 @Service
 public class ReportService {
 
+    private IReportRepository reportRepository;
+    @Autowired
+    public void setReportRepository(IReportRepository reportRepository) {
+        this.reportRepository = reportRepository;
+    }
+
     private ITripRepository tripRepository;
     @Autowired
     public void setTripRepository(ITripRepository tripRepository) {
@@ -42,4 +48,7 @@ public class ReportService {
         this.passengerRepository = passengerRepository;
     }
 
+    public List<City> findDistinctCitiesByDriverId(int id) {
+        return this.reportRepository.findDistinctCitiesByDriverId(id);
+    }
 }
