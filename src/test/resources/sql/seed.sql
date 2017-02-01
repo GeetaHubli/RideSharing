@@ -35,6 +35,8 @@ VALUES
 
 INSERT INTO `trips` (`duration`,`start_time`,`stop_time`,`car_id`,`passenger_id`,`driver_id`,`city_id`,`distance`,`cost`,`total_cost`)
 VALUES
-  (30.00, NOW(), NOW(), 1, 1, 1, 1, 10, 200.00, 200.00 ),
-  (45.00, NOW(), NOW(), 1, 2, 2, 2, 15, 450.00, 450.00 );
+  (10.00, NOW(), NOW(), 1, 1, 1, 1, 10, 200.00, 200.00 ),
+  (20.00, NOW(), NOW(), 1, 1, 1, 1, 10, 200.00, 200.00 ),
+  (30.00, NOW(), NOW(), 2, 1, 1, 2, 10, 200.00, 200.00 ),
+  (40.00, NOW(), NOW(), 2, 2, 2, 2, 15, 450.00, 450.00 );
 

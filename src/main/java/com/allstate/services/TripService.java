@@ -6,6 +6,7 @@ import com.allstate.entities.Passenger;
 import com.allstate.entities.Trip;
 import com.allstate.repositories.IDriverRepository;
 import com.allstate.repositories.ITripRepository;
+import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +38,9 @@ public class TripService {
 
     public List<Trip> findByCarIdIs(int carId) {
         return (List<Trip>) this.tripRepository.findByCarIdIs(carId);
+    }
+
+    public List<Trip> findAll() {
+        return (List<Trip>) this.tripRepository.findAll();
     }
 }

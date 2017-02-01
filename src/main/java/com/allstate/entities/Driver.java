@@ -32,7 +32,8 @@ public class Driver {
     private int violations;
     private Date created;
     private Date modified;
-    private List<Driver> drivers;
+    private List<City> cities;
+    private List<Trip> trips;
 
     @Id
     @GeneratedValue
@@ -100,13 +101,21 @@ public class Driver {
         this.modified = modified;
     }
 
-    //Trip to Driver mapping
-    @OneToMany(mappedBy = "drivers")
+    @ManyToMany(mappedBy="drivers")
     @JsonIgnore
-    public List<Driver> getDrivers() {
-        return drivers;
+    public List<City> getCities() {
+        return cities;
     }
-    public void setDrivers(List<Driver> passengers) {
-        this.drivers = passengers;
+    public void setCities(List<City> cities) {
+        this.cities = cities;
+    }
+
+    @OneToMany(mappedBy = "driver")
+    @JsonIgnore
+    public List<Trip> getTrips() {
+        return trips;
+    }
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 }

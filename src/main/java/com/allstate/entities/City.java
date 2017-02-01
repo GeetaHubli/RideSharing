@@ -24,6 +24,8 @@ public class City {
     private Date created;
     private Date modified;
     private List<City> cities;
+    private List<Trip> trips;
+    private List<Driver> drivers;
 
     public City() {
     }
@@ -82,7 +84,7 @@ public class City {
         this.modified = modified;
     }
 
-    //Trip to Car mapping
+    //Trip to City mapping
     @OneToMany(mappedBy = "cities")
     @JsonIgnore
     public List<City> getCities() {
@@ -90,5 +92,26 @@ public class City {
     }
     public void setCities(List<City> cities) {
         this.cities = cities;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "trips",
+            joinColumns = @JoinColumn(name = "city_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "driver_id", referencedColumnName = "id"))
+    @JsonIgnore
+    public List<Driver> getDrivers() {
+        return drivers;
+    }
+    public void setDrivers(List<Driver> drivers) {
+        this.drivers = drivers;
+    }
+
+    @OneToMany(mappedBy = "city")
+    @JsonIgnore
+    public List<Trip> getTrips() {
+        return trips;
+    }
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
 }
