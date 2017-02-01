@@ -43,4 +43,8 @@ public class TripService {
     public List<Trip> findAll() {
         return (List<Trip>) this.tripRepository.findAll();
     }
+
+    public List<Trip> findByDriverIdIs(int id) {
+        return (List<Trip>) this.tripRepository.findByDriverIdIs(id);
+    }
 }

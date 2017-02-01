@@ -97,4 +97,10 @@ public class ReportServiceTest {
         List<Trip> trips = this.tripService.findByCarIdIs(1);
         assertEquals(2, trips.size());
     }
+
+    @Test
+    public void shouldFindAllTripsByDriverId() throws Exception {
+        List<Trip> trips = this.tripService.findByDriverIdIs(1);
+        assertEquals(3, trips.size());
+    }
 }

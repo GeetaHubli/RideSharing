@@ -9,4 +9,5 @@ import java.util.List;
 public interface ITripRepository extends CrudRepository<Trip, Integer> {
     public Iterable<Trip> findByCarIdIs(int carId);
 
+    public Iterable<Trip> findByDriverIdIs(int id);
 }
