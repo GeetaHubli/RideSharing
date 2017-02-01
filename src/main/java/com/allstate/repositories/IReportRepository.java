@@ -27,4 +27,10 @@ public interface IReportRepository extends CrudRepository<City, Long> {
 
     @Query("select max(t.distance) from Trip t inner join t.passenger p where p.id = :id")
     public int findLongestTripByPassengerId(@Param("id") int id);
+
+    @Query("select sum(t.totalCost) from Trip t inner join t.city c where c.id = :id")
+    public double CalculateTotalCostForCity(@Param("id") int id);
+
+    @Query("select sum(t.totalCost) from Trip t inner join t.driver d where d.id = :id")
+    public double CalculateTotalCostForDriver(@Param("id") int id);
 }

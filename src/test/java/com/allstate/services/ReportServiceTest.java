@@ -136,4 +136,16 @@ public class ReportServiceTest {
         int shortestDistance = this.reportService.findLongestTripByPassengerId(1);
         assertEquals(20, shortestDistance);
     }
+
+    @Test
+    public void shouldFindTotalCostOnTripsByCityId() throws Exception {
+        double totalCostByCity = this.reportService.CalculateTotalCostForCity(1);
+        assertEquals(500.00, totalCostByCity, 0.1);
+    }
+
+    @Test
+    public void shouldFindTotalCostOnTripsByDriverId() throws Exception {
+        double totalCostByDriver = this.reportService.CalculateTotalCostForDriver(2);
+        assertEquals(650.00, totalCostByDriver, 0.1);
+    }
 }

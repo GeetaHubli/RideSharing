@@ -68,4 +68,12 @@ public class ReportService {
     public int findLongestTripByPassengerId(int id) {
         return this.reportRepository.findLongestTripByPassengerId(id);
     }
+
+    public double CalculateTotalCostForCity(int id) {
+        return this.reportRepository.CalculateTotalCostForCity(id);
+    }
+
+    public double CalculateTotalCostForDriver(int id) {
+        return this.reportRepository.CalculateTotalCostForDriver(id);
+    }
 }
