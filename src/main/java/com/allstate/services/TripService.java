@@ -51,4 +51,8 @@ public class TripService {
     public List<Trip> findByCityId(int id) {
         return (List<Trip>) this.tripRepository.findByCityIdIs(id);
     }
+
+    public Trip addPassengerReview(Trip trip) {
+        return this.tripRepository.save(trip);
+    }
 }

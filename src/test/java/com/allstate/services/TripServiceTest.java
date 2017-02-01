@@ -1,6 +1,7 @@
 package com.allstate.services;
 
 import com.allstate.entities.*;
+import com.allstate.enums.Review;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -91,6 +92,14 @@ public class TripServiceTest {
     public void shouldDeleteTripById() throws Exception {
         this.tripService.delete(2);
         assertNull(this.tripService.findById(2));
+    }
 
+    @Test
+    public void shouldAddPassengerReviewAndText() throws Exception {
+        Trip trip = this.tripService.findById(1);
+        trip.setPassengerReview("4");
+        trip.setPassengerReviewText("Good Driver");
+        Trip result = this.tripService.addPassengerReview(trip);
+        assertEquals("Good Driver", result.getPassengerReviewText());
     }
 }

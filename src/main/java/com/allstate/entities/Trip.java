@@ -2,6 +2,7 @@ package com.allstate.entities;
 
 import com.allstate.enums.Review;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,10 +10,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name="trips")
+@Data
 public class Trip {
     private int id;
     private int version;
@@ -27,9 +28,9 @@ public class Trip {
     private int tip;
     private double cost;
     private double totalCost;
-    private Review driverReview;
+    private String driverReview;
     private String driverReviewText;
-    private Review passengerReview;
+    private String passengerReview;
     private String passengerReviewText;
     private Date created;
     private Date modified;
