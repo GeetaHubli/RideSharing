@@ -25,13 +25,13 @@ INSERT INTO `passengers` (`name`, `age`, `gender`,`balance`)
 VALUES
   ('Swapnil', 22, 'M', 10000.00 ),
   ('test1', 30, 'M', 4000.00 ),
-  ('test2', 27, 'F', 6000.00 );
+  ('test2', 27, 'F', 00.00 );
 
-INSERT INTO `drivers` (`name`, `age`, `gender`)
+INSERT INTO `drivers` (`name`, `age`, `gender`, `violations`)
 VALUES
-  ('Geeta', 35, 'F'),
-  ('test1', 30, 'M'),
-  ('test2', 27, 'F');
+  ('Geeta', 35, 'F', 0),
+  ('test1', 30, 'M', 1),
+  ('test2', 27, 'F', 4);
 
 INSERT INTO `trips` (`duration`,`start_time`,`stop_time`,`car_id`,`passenger_id`,`driver_id`,`city_id`,`distance`,`cost`,`total_cost`)
 VALUES

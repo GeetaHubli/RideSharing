@@ -1,7 +1,10 @@
 package com.allstate.services;
 
 import ch.qos.logback.core.html.IThrowableRenderer;
+import com.allstate.entities.Driver;
+import com.allstate.entities.Passenger;
 import com.allstate.entities.Trip;
+import com.allstate.repositories.IDriverRepository;
 import com.allstate.repositories.ITripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +20,11 @@ public class TripService {
         this.tripRepository = tripRepository;
     }
 
-    public Trip create(Trip trip) {
-        return  this.tripRepository.save(trip);
+    public Trip create(Trip trip, Driver driver, Passenger passenger) {
+        if(driver.getViolations()<=3 && passenger.getBalance() > 0)
+            return this.tripRepository.save(trip);
+        else
+            return null;
     }
 
     public Trip findById(int id) {

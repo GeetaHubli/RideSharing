@@ -50,8 +50,34 @@ public class TripServiceTest {
         City city = this.cityService.findById(1);
         Driver driver = this.driverService.findById(1);
         Trip trip = new Trip(30.00, timestamp, timestamp, car, passenger, driver, city, 10, 200.00, 200.00);
-        Trip result = this.tripService.create(trip);
+        Trip result = this.tripService.create(trip, driver, passenger);
         assertEquals(3, result.getId());
+    }
+
+    @Test
+    public void shouldNotCreateTripForDriverBanned() throws Exception {
+        Date date = new Date();
+        Timestamp timestamp = new Timestamp(date.getTime());
+        Car car = this.carService.findById(1);
+        Passenger passenger = this.passengerService.findById(1);
+        City city = this.cityService.findById(1);
+        Driver driver = this.driverService.findById(3);
+        Trip trip = new Trip(30.00, timestamp, timestamp, car, passenger, driver, city, 10, 200.00, 200.00);
+        Trip result = this.tripService.create(trip, driver, passenger);
+        assertNull(result);
+    }
+
+    @Test
+    public void shouldNotCreateTripForPassengerBalanceNotEnough() throws Exception {
+        Date date = new Date();
+        Timestamp timestamp = new Timestamp(date.getTime());
+        Car car = this.carService.findById(1);
+        Passenger passenger = this.passengerService.findById(3);
+        City city = this.cityService.findById(1);
+        Driver driver = this.driverService.findById(1);
+        Trip trip = new Trip(30.00, timestamp, timestamp, car, passenger, driver, city, 10, 200.00, 200.00);
+        Trip result = this.tripService.create(trip, driver, passenger);
+        assertNull(result);
     }
 
     @Test
