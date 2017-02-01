@@ -14,7 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 		CarServiceTest.class,
 		PassengerServiceTest.class,
 		DriverServiceTest.class,
-		TripServiceTest.class
+		TripServiceTest.class,
+		ReportServiceTest.class
 })
 public class RideSharingApplicationTests {
 

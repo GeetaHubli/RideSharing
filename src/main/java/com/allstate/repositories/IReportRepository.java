@@ -3,6 +3,7 @@ package com.allstate.repositories;
 import com.allstate.entities.City;
 import com.allstate.entities.Driver;
 import com.allstate.entities.Passenger;
+import com.allstate.entities.Trip;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -19,4 +20,11 @@ public interface IReportRepository extends CrudRepository<City, Long> {
 
     @Query("select distinct d from Driver d inner join d.trips t inner join t.passenger p where p.id = :id")
     public List<Driver> findDistinctDriverByPassengerId(@Param("id") int id);
+
+    @Query("select min(t.distance) from Trip t inner join t.passenger p where p.id = :id")
+    public int findShortestTripByPassengerId(@Param("id") int id);
+
+
+    @Query("select max(t.distance) from Trip t inner join t.passenger p where p.id = :id")
+    public int findLongestTripByPassengerId(@Param("id") int id);
 }

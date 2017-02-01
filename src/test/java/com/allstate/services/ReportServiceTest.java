@@ -48,7 +48,7 @@ public class ReportServiceTest {
     @Test
     public void shouldFindAllTrips() throws Exception {
         List<Trip> trips = this.tripService.findAll();
-        assertEquals(2, trips.size());
+        assertEquals(4, trips.size());
     }
 
     @Test
@@ -80,14 +80,14 @@ public class ReportServiceTest {
     public void shouldFindAllCitiesByDriverId_WithNoDistinct() throws Exception {
         Driver driver = this.driverService.findById(1);
         List<City> cities = driver.getCities();
-        assertEquals(3, cities.size());
+        assertEquals(2, cities.size());
     }
 
     @Test
     @Transactional
     public void shouldFindAllCitiesByDriverId_DistinctValues() throws Exception {
         List<City> cities = this.reportService.findDistinctCitiesByDriverId(1);
-        assertEquals(2, cities.size());
+        assertEquals(1, cities.size());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class ReportServiceTest {
     @Test
     public void shouldFindAllTripsByDriverId() throws Exception {
         List<Trip> trips = this.tripService.findByDriverIdIs(1);
-        assertEquals(3, trips.size());
+        assertEquals(2, trips.size());
     }
 
     @Test
@@ -123,5 +123,17 @@ public class ReportServiceTest {
     public void shouldFindDriversByPassengerId() throws Exception {
         List<Driver> drivers = this.reportService.findDistinctDriverByPassengerId(1);
         assertEquals(2, drivers.size());
+    }
+
+    @Test
+    public void shouldFindShortestTripByPassengerId() throws Exception {
+        int shortestDistance = this.reportService.findShortestTripByPassengerId(1);
+        assertEquals(10, shortestDistance);
+    }
+
+    @Test
+    public void shouldFindLongestTripByPassengerId() throws Exception {
+        int shortestDistance = this.reportService.findLongestTripByPassengerId(1);
+        assertEquals(20, shortestDistance);
     }
 }

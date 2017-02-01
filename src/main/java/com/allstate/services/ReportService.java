@@ -60,4 +60,12 @@ public class ReportService {
     public List<Driver> findDistinctDriverByPassengerId(int id) {
         return this.reportRepository.findDistinctDriverByPassengerId(id);
     }
+
+    public int findShortestTripByPassengerId(int id) {
+        return this.reportRepository.findShortestTripByPassengerId(id);
+    }
+
+    public int findLongestTripByPassengerId(int id) {
+        return this.reportRepository.findLongestTripByPassengerId(id);
+    }
 }
