@@ -34,6 +34,9 @@ public class ReportServiceTest {
     @Autowired
     private ReportService reportService;
 
+    @Autowired
+    private CarService carService;
+
     @Before
     public void setUp() throws Exception {
 
@@ -87,5 +90,11 @@ public class ReportServiceTest {
     public void shouldFindAllCitiesByDriverId_DistinctValues() throws Exception {
         List<City> cities = this.reportService.findDistinctCitiesByDriverId(1);
         assertEquals(2, cities.size());
+    }
+
+    @Test
+    public void shouldFindAllTripsForACar() throws Exception {
+        List<Trip> trips = this.tripService.findByCarIdIs(1);
+        assertEquals(2, trips.size());
     }
 }
