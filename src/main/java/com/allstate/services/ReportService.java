@@ -2,6 +2,7 @@ package com.allstate.services;
 
 import com.allstate.entities.City;
 import com.allstate.entities.Driver;
+import com.allstate.entities.Passenger;
 import com.allstate.entities.Trip;
 import com.allstate.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,9 @@ public class ReportService {
 
     public List<City> findDistinctCitiesByDriverId(int id) {
         return this.reportRepository.findDistinctCitiesByDriverId(id);
+    }
+
+    public List<Passenger> findDistinctPassengersByCityId(int id) {
+        return this.reportRepository.findDistinctPassengersByCityId(id);
     }
 }

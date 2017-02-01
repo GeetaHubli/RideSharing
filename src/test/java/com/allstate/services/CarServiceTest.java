@@ -42,7 +42,7 @@ public class CarServiceTest {
     public void shouldCreateCar() throws Exception {
         Car car = new Car("HYUNDAI", "Santro", 2010, Cartype.BASIC);
         Car result = this.carService.create(car);
-        assertEquals(4, result.getId());
+        assertEquals(5, result.getId());
     }
 
     @Test
@@ -60,8 +60,8 @@ public class CarServiceTest {
 
     @Test
     public void shouldDeleteCarById() throws Exception {
-        this.carService.delete(3);
-        Car car = this.carService.findById(3);
+        this.carService.delete(4);
+        Car car = this.carService.findById(4);
         assertNull(car);
     }
 

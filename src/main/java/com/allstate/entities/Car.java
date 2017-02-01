@@ -23,7 +23,6 @@ public class Car {
     private Cartype cartype;
     private Date created;
     private Date modified;
-    private List<Car> cars;
 
     public Car(String make, String model, int year, Cartype cartype) {
         this.make = make;
@@ -109,16 +108,6 @@ public class Car {
 
     public void setModified(Date modified) {
         this.modified = modified;
-    }
-
-    //Trip to Car mapping
-    @OneToMany(mappedBy = "cars")
-    @JsonIgnore
-    public List<Car> getCars() {
-        return cars;
-    }
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
     }
 
 }

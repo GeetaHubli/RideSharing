@@ -19,7 +19,8 @@ INSERT INTO `cars` (`make`,`model`,`year`,`cartype`)
 VALUES
   ('BMW', 'X5', 2012, 'LUX'),
   ('MARUTI', '800', 2010, 'BASIC'),
-  ('Nissan', 'Pathfinder', 2016, 'LUX');
+  ('Nissan', 'Pathfinder', 2016, 'LUX'),
+  ('test', 'Pathfinder', 2016, 'BASIC');
 
 INSERT INTO `passengers` (`name`, `age`, `gender`,`balance`)
 VALUES
@@ -38,5 +39,5 @@ VALUES
   (10.00, NOW(), NOW(), 1, 1, 1, 1, 10, 200.00, 200.00 ),
   (20.00, NOW(), NOW(), 1, 1, 1, 1, 10, 200.00, 200.00 ),
   (30.00, NOW(), NOW(), 2, 1, 1, 2, 10, 200.00, 200.00 ),
-  (40.00, NOW(), NOW(), 2, 2, 2, 2, 15, 450.00, 450.00 );
+  (40.00, NOW(), NOW(), 3, 2, 2, 2, 15, 450.00, 450.00 );
 

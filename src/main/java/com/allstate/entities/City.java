@@ -23,9 +23,9 @@ public class City {
     private double nightrate;
     private Date created;
     private Date modified;
-    private List<City> cities;
     private List<Trip> trips;
     private List<Driver> drivers;
+    private List<Passenger> passengers;
 
     public City() {
     }
@@ -84,16 +84,6 @@ public class City {
         this.modified = modified;
     }
 
-    //Trip to City mapping
-    @OneToMany(mappedBy = "cities")
-    @JsonIgnore
-    public List<City> getCities() {
-        return cities;
-    }
-    public void setCities(List<City> cities) {
-        this.cities = cities;
-    }
-
     @ManyToMany
     @JoinTable(name = "trips",
             joinColumns = @JoinColumn(name = "city_id", referencedColumnName = "id"),
@@ -104,6 +94,18 @@ public class City {
     }
     public void setDrivers(List<Driver> drivers) {
         this.drivers = drivers;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "trips",
+            joinColumns = @JoinColumn(name = "passenger_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "city_id", referencedColumnName = "id"))
+    @JsonIgnore
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
     }
 
     @OneToMany(mappedBy = "city")

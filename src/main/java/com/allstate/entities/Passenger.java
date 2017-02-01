@@ -25,7 +25,7 @@ public class Passenger {
     private double balance;
     private Date created;
     private Date modified;
-    private List<Passenger> passengers;
+    private List<Trip> trips;
 
     public Passenger() {
     }
@@ -103,13 +103,13 @@ public class Passenger {
         this.modified = modified;
     }
 
-    //Trip to Passenger mapping
-    @OneToMany(mappedBy = "passengers")
+    @OneToMany(mappedBy = "passenger")
     @JsonIgnore
-    public List<Passenger> getPassengers() {
-        return passengers;
+    public List<Trip> getTrips() {
+        return trips;
     }
-    public void setPassengers(List<Passenger> passengers) {
-        this.passengers = passengers;
+    public void setTrips(List<Trip> trips) {
+        this.trips = trips;
     }
+
 }
