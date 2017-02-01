@@ -118,4 +118,10 @@ public class ReportServiceTest {
         List<Passenger> passenger = this.reportService.findDistinctPassengersByCityId(2);
         assertEquals(2, passenger.size());
     }
+
+    @Test
+    public void shouldFindDriversByPassengerId() throws Exception {
+        List<Driver> drivers = this.reportService.findDistinctDriverByPassengerId(1);
+        assertEquals(2, drivers.size());
+    }
 }

@@ -56,4 +56,8 @@ public class ReportService {
     public List<Passenger> findDistinctPassengersByCityId(int id) {
         return this.reportRepository.findDistinctPassengersByCityId(id);
     }
+
+    public List<Driver> findDistinctDriverByPassengerId(int id) {
+        return this.reportRepository.findDistinctDriverByPassengerId(id);
+    }
 }

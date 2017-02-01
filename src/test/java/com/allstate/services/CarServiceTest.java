@@ -1,6 +1,7 @@
 package com.allstate.services;
 
 import com.allstate.entities.Car;
+import com.allstate.entities.Driver;
 import com.allstate.entities.Trip;
 import com.allstate.enums.Cartype;
 import org.junit.After;
@@ -71,6 +72,5 @@ public class CarServiceTest {
         Car car = this.carService.findById(1);
         assertNull(car);
     }
-
 
 }
